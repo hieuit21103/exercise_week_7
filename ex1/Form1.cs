@@ -31,10 +31,7 @@ namespace ex1
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBox1.SelectedIndex == listBox1.SelectedItem)
-            {
-
-            }
+            label1.Text = listBox1.SelectedValue.ToString();
         }
     }
 
