@@ -33,32 +33,22 @@ namespace ex2
         {
             new Person { Name = "John", Age = 30, Gender = "Male" },
             new Person { Name = "Jane", Age = 25, Gender = "Female" },
-            new Person { Name = "Bob", Age = 40, Gender = "Male" },
-            new Person { Name = "John", Age = 30, Gender = "Male" },
-            new Person { Name = "Jane", Age = 25, Gender = "Female" },
-            new Person { Name = "Bob", Age = 40, Gender = "Male" },
-            new Person { Name = "John", Age = 30, Gender = "Male" },
-            new Person { Name = "Jane", Age = 25, Gender = "Female" },
-            new Person { Name = "Bob", Age = 40, Gender = "Male" },
-            new Person { Name = "John", Age = 30, Gender = "Male" },
-            new Person { Name = "Jane", Age = 25, Gender = "Female" },
-            new Person { Name = "Bob", Age = 40, Gender = "Male" },
-            new Person { Name = "John", Age = 30, Gender = "Male" },
-            new Person { Name = "Jane", Age = 25, Gender = "Female" },
-            new Person { Name = "Bob", Age = 40, Gender = "Male" },
-            new Person { Name = "John", Age = 30, Gender = "Male" },
-            new Person { Name = "Jane", Age = 25, Gender = "Female" },
-            new Person { Name = "Bob", Age = 40, Gender = "Male" },
-            new Person { Name = "John", Age = 30, Gender = "Male" },
-            new Person { Name = "Jane", Age = 25, Gender = "Female" },
-            new Person { Name = "Bob", Age = 40, Gender = "Male" },
-            new Person { Name = "John", Age = 30, Gender = "Male" },
-            new Person { Name = "Jane", Age = 25, Gender = "Female" },
-            new Person { Name = "Bob", Age = 40, Gender = "Male" },
-            new Person { Name = "John", Age = 30, Gender = "Male" },
-            new Person { Name = "Jane", Age = 25, Gender = "Female" },
             new Person { Name = "Bob", Age = 40, Gender = "Male" }
         };
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            ListViewItem foundItem = listView1.FindItemWithText(textBox1.Text, false, 0, true);
+            if(foundItem != null)
+            {
+                listView1.TopItem = foundItem;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class Person
