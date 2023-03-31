@@ -20,13 +20,41 @@ namespace ex2
 
         public void init()
         {
-            listView1.Columns.Add("Name");
-            listView1.Columns.Add("Age");
-            listView1.Columns.Add("Gender");
+            foreach (Person p in people)
+            {
+                ListViewItem item = new ListViewItem(p.Name);
+                item.SubItems.Add(p.Age.ToString());
+                item.SubItems.Add(p.Gender);
+                listView1.Items.Add(item);
+            }
         }
 
         private List<Person> people = new List<Person>
         {
+            new Person { Name = "John", Age = 30, Gender = "Male" },
+            new Person { Name = "Jane", Age = 25, Gender = "Female" },
+            new Person { Name = "Bob", Age = 40, Gender = "Male" },
+            new Person { Name = "John", Age = 30, Gender = "Male" },
+            new Person { Name = "Jane", Age = 25, Gender = "Female" },
+            new Person { Name = "Bob", Age = 40, Gender = "Male" },
+            new Person { Name = "John", Age = 30, Gender = "Male" },
+            new Person { Name = "Jane", Age = 25, Gender = "Female" },
+            new Person { Name = "Bob", Age = 40, Gender = "Male" },
+            new Person { Name = "John", Age = 30, Gender = "Male" },
+            new Person { Name = "Jane", Age = 25, Gender = "Female" },
+            new Person { Name = "Bob", Age = 40, Gender = "Male" },
+            new Person { Name = "John", Age = 30, Gender = "Male" },
+            new Person { Name = "Jane", Age = 25, Gender = "Female" },
+            new Person { Name = "Bob", Age = 40, Gender = "Male" },
+            new Person { Name = "John", Age = 30, Gender = "Male" },
+            new Person { Name = "Jane", Age = 25, Gender = "Female" },
+            new Person { Name = "Bob", Age = 40, Gender = "Male" },
+            new Person { Name = "John", Age = 30, Gender = "Male" },
+            new Person { Name = "Jane", Age = 25, Gender = "Female" },
+            new Person { Name = "Bob", Age = 40, Gender = "Male" },
+            new Person { Name = "John", Age = 30, Gender = "Male" },
+            new Person { Name = "Jane", Age = 25, Gender = "Female" },
+            new Person { Name = "Bob", Age = 40, Gender = "Male" },
             new Person { Name = "John", Age = 30, Gender = "Male" },
             new Person { Name = "Jane", Age = 25, Gender = "Female" },
             new Person { Name = "Bob", Age = 40, Gender = "Male" }
