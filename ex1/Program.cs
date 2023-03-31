@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace exercise_week_7
+namespace ex1
 {
     internal static class Program
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace exercise_week_7.Properties
+namespace ex1.Properties
 {
 
 

@@ -1,4 +1,4 @@
-﻿namespace exercise_week_7
+﻿namespace ex1
 {
     partial class Form1
     {
