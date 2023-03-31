@@ -20,21 +20,19 @@ namespace ex2
 
         public void init()
         {
-            foreach (Person p in people)
+            if (people != null)
             {
-                ListViewItem item = new ListViewItem(p.Name);
-                item.SubItems.Add(p.Age.ToString());
-                item.SubItems.Add(p.Gender);
-                listView1.Items.Add(item);
+                foreach (Person p in people)
+                {
+                    ListViewItem item = new ListViewItem(p.Name);
+                    item.SubItems.Add(p.Age.ToString());
+                    item.SubItems.Add(p.Gender);
+                    listView1.Items.Add(item);
+                }
             }
         }
 
-        private List<Person> people = new List<Person>
-        {
-            new Person { Name = "John", Age = 30, Gender = "Male" },
-            new Person { Name = "Jane", Age = 25, Gender = "Female" },
-            new Person { Name = "Bob", Age = 40, Gender = "Male" }
-        };
+        public List<Person> people { get; set; } 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -47,8 +45,18 @@ namespace ex2
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Child childForm = new Child(this);
+            childForm.Show();
         }
+
+        public void addList(string name,int age,string gender)
+        {
+            ListViewItem item = new ListViewItem(name);
+            item.SubItems.Add(age.ToString());
+            item.SubItems.Add(gender);
+            listView1.Items.Add(item);
+        }
+
     }
 
     public class Person
