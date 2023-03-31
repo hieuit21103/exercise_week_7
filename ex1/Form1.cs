@@ -15,6 +15,46 @@ namespace ex1
         public Form1()
         {
             InitializeComponent();
+            initItem();
+        }
+
+        public void initItem()
+        {
+            List<Student> students = new List<Student>();
+            students.Add(new Student("hieu", 1));
+            students.Add(new Student("hien", 2));
+            students.Add(new Student("hiep", 3));
+            listBox1.DisplayMember = "name"; 
+            listBox1.ValueMember = "id";
+            listBox1.DataSource = students;
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBox1.SelectedIndex == listBox1.SelectedItem)
+            {
+
+            }
+        }
+    }
+
+    class Student
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public Student(string name, int id)
+        {
+            this.name = name;
+            this.id = id;
+        }
+
+        public string getName()
+        {
+            return name;
+        }
+        public int getId()
+        {
+            return id;
         }
     }
 }
