@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Xml.Linq;
 
 namespace ex1
 {
@@ -21,37 +23,29 @@ namespace ex1
         public void initItem()
         {
             List<Student> students = new List<Student>();
-            students.Add(new Student("hieu", 1));
-            students.Add(new Student("hien", 2));
-            students.Add(new Student("hiep", 3));
+            students.Add(new Student { id = 1, name = "hieu", major = "CNTT" });
+            students.Add(new Student { id = 2, name = "hien", major = "CNTT" });
+            students.Add(new Student { id = 3, name = "hiep", major = "CNTT" });
             listBox1.DisplayMember = "name"; 
-            listBox1.ValueMember = "id";
+            listBox1.ValueMember = "id;name;major";
             listBox1.DataSource = students;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            label1.Text = listBox1.SelectedValue.ToString();
+        {          
+            Student student = listBox1.SelectedItem as Student;
+            label1.Text = student.displayInfomation.ToString();
         }
     }
 
-    class Student
+    public class Student
     {
         public int id { get; set; }
         public string name { get; set; }
-        public Student(string name, int id)
+        public string major { get; set; }
+        public string displayInfomation
         {
-            this.name = name;
-            this.id = id;
-        }
-
-        public string getName()
-        {
-            return name;
-        }
-        public int getId()
-        {
-            return id;
+            get { return $"{name} \nMSV: {id}\nKhoa: {major}"; }
         }
     }
 }
