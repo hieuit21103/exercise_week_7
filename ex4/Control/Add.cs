@@ -80,7 +80,6 @@ namespace ex4
             if(textBox1.Text != "" && textBox2.Text != "" & textBox3.Text != "")
             {
                 addToDb();
-                _parentform.updateTree();
                 this.Close();
             }
             else
