@@ -63,5 +63,23 @@ namespace ex4
         {
             database.close();
         }
+
+        private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            Console.WriteLine(e.Node.Text);
+            checkNode(e.Node, e.Node.Checked);
+        }
+        private void checkNode(TreeNode node, bool isChecked)
+        {
+            foreach (TreeNode item in node.Nodes)
+            {
+                item.Checked = isChecked;
+
+                if (item.Nodes.Count > 0)
+                {
+                    checkNode(item, isChecked);
+                }
+            }
+        }
     }
 }
