@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI.Common;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace ex4.Control
 {
@@ -114,6 +107,15 @@ namespace ex4.Control
                 }
                 reader.Close();
             }
+        }
+
+        public void searchById(int id)
+        {
+
+        }
+        public void searchByName(string name)
+        {
+
         }
         public void close()
         {

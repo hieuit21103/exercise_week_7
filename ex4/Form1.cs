@@ -1,9 +1,6 @@
 ﻿using System;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using ex4.Control;
-using System.Collections.Generic;
 
 namespace ex4
 {
