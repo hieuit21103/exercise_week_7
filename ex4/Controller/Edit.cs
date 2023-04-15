@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Windows.Forms;
 
 namespace ex4
 {
@@ -57,16 +50,16 @@ namespace ex4
                 {
                     connection.Open();
                     SQLiteCommand cmd = new SQLiteCommand("UPDATE SINHVIEN SET ID=@ID1,NAME=@NAME,GENDER=@GENDER,NGANH=@NGANH,KHOA=@KHOA WHERE ID=@ID", connection);
-                    cmd.Parameters.AddWithValue("@ID1",Int32.Parse(textBox1.Text));
-                    cmd.Parameters.AddWithValue("@NAME",textBox2.Text);
-                    cmd.Parameters.AddWithValue("@GENDER",comboBox1.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@NGANH",textBox3.Text);
-                    cmd.Parameters.AddWithValue("@KHOA",comboBox2.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@ID",id);
+                    cmd.Parameters.AddWithValue("@ID1", Int32.Parse(textBox1.Text));
+                    cmd.Parameters.AddWithValue("@NAME", textBox2.Text);
+                    cmd.Parameters.AddWithValue("@GENDER", comboBox1.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@NGANH", textBox3.Text);
+                    cmd.Parameters.AddWithValue("@KHOA", comboBox2.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@ID", id);
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }

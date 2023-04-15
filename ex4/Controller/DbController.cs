@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Windows.Forms;
 
 namespace ex4.Control
 {
@@ -28,7 +28,7 @@ namespace ex4.Control
         }
 
         public void init()
-        { 
+        {
             TreeNode root = new TreeNode();
             root.Text = "Sinh viên";
             _parentform.treeView1.Nodes.Add(root);

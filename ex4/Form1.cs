@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ex4.Control;
+using System;
 using System.Windows.Forms;
-using ex4.Control;
 
 namespace ex4
 {
@@ -12,7 +12,7 @@ namespace ex4
             InitializeComponent();
             database = new DbController(this);
             init();
-            
+
         }
 
         private void init()
@@ -37,7 +37,8 @@ namespace ex4
         private void button2_Click(object sender, EventArgs e)
         {
             TreeNode selectedNode = treeView1.SelectedNode;
-            if (Int32.TryParse(selectedNode.Text, out int i)) {
+            if (Int32.TryParse(selectedNode.Text, out int i))
+            {
                 database.edit(Int32.Parse(selectedNode.Text));
             }
 
@@ -46,11 +47,11 @@ namespace ex4
         private void button3_Click(object sender, EventArgs e)
         {
             TreeNode selectedNode = treeView1.SelectedNode;
-            if(selectedNode != null)
+            if (selectedNode != null)
             {
                 database.remove(Int32.Parse(selectedNode.Text));
             }
-            foreach(TreeNode node in treeView1.Nodes)
+            foreach (TreeNode node in treeView1.Nodes)
             {
                 if (node.Checked)
                 {
@@ -59,7 +60,7 @@ namespace ex4
             }
         }
 
-        
+
 
         private void button4_Click(object sender, EventArgs e)
         {
