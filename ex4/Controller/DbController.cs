@@ -6,7 +6,7 @@ namespace ex4.Control
 {
     internal class DbController
     {
-        private string connectionString = @"data source=C:\Users\HIEU\source\repos\exercise_week_7\ex4\ex4.db;";
+        private string connectionString = @"data source=ex4.db;";
         private SQLiteConnection connection;
         Form1 _parentform;
         string[] khoa = { "K63", "K62", "K61", "K60" };
