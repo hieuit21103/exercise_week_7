@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using System.Data.SQLite;
 
 namespace ex4
 {
@@ -26,13 +26,13 @@ namespace ex4
         }
         private void update()
         {
-            MySqlConnection conn = new MySqlConnection(connectionString);
+            SQLiteConnection conn = new SQLiteConnection(connectionString);
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM SINHVIEN WHERE ID=@ID", conn);
+                SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM SINHVIEN WHERE ID=@ID", conn);
                 cmd.Parameters.AddWithValue("@ID", id);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SQLiteDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     textBox1.Text = reader["ID"].ToString();
@@ -52,11 +52,11 @@ namespace ex4
         {
             if (textBox1.Text != "" && textBox2.Text != "" & textBox3.Text != "")
             {
-                MySqlConnection connection = new MySqlConnection(connectionString);
+                SQLiteConnection connection = new SQLiteConnection(connectionString);
                 try
                 {
                     connection.Open();
-                    MySqlCommand cmd = new MySqlCommand("UPDATE SINHVIEN SET ID=@ID1,NAME=@NAME,GENDER=@GENDER,NGANH=@NGANH,KHOA=@KHOA WHERE ID=@ID", connection);
+                    SQLiteCommand cmd = new SQLiteCommand("UPDATE SINHVIEN SET ID=@ID1,NAME=@NAME,GENDER=@GENDER,NGANH=@NGANH,KHOA=@KHOA WHERE ID=@ID", connection);
                     cmd.Parameters.AddWithValue("@ID1",Int32.Parse(textBox1.Text));
                     cmd.Parameters.AddWithValue("@NAME",textBox2.Text);
                     cmd.Parameters.AddWithValue("@GENDER",comboBox1.SelectedItem.ToString());

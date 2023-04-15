@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,11 +53,11 @@ namespace ex4
             string gender = comboBox1.SelectedItem.ToString();
             int khoa = Int32.Parse(comboBox2.SelectedItem.ToString());
             string nganh = textBox3.Text;
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SQLiteConnection connection = new SQLiteConnection(connectionString);
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("INSERT INTO SINHVIEN VALUES(@ID,@NAME,@GENDER,@NGANH,@KHOA)", connection);
+                SQLiteCommand command = new SQLiteCommand("INSERT INTO SINHVIEN VALUES(@ID,@NAME,@GENDER,@NGANH,@KHOA)", connection);
                 command.Parameters.AddWithValue("@ID", id);
                 command.Parameters.AddWithValue("@NAME", name);
                 command.Parameters.AddWithValue("@GENDER", gender);

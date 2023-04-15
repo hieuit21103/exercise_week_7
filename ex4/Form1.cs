@@ -50,6 +50,13 @@ namespace ex4
             {
                 database.remove(Int32.Parse(selectedNode.Text));
             }
+            foreach(TreeNode node in treeView1.Nodes)
+            {
+                if (node.Checked)
+                {
+                    database.remove(Int32.Parse(node.Text));
+                }
+            }
         }
 
         
@@ -68,6 +75,7 @@ namespace ex4
         {
             Console.WriteLine(e.Node.Text);
             checkNode(e.Node, e.Node.Checked);
+            treeView1.SelectedNode = e.Node;
         }
         private void checkNode(TreeNode node, bool isChecked)
         {

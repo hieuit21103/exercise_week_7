@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using System.Data.SQLite;
 
 namespace ex4.Control
 {
     internal class DbController
     {
-        private string connectionString = "server = localhost; port=3306;database=sinhvien;user=root;password=1234";
-        private MySqlConnection connection;
+        private string connectionString = @"data source=C:\Users\HIEU\source\repos\exercise_week_7\ex4\ex4.db;";
+        private SQLiteConnection connection;
         Form1 _parentform;
         string[] khoa = { "K63", "K62", "K61", "K60" };
 
         public DbController(Form1 parentform)
         {
-            connection = new MySqlConnection(connectionString);
+            connection = new SQLiteConnection(connectionString);
             try
             {
                 connection.Open();
-                MySqlCommand command1 = new MySqlCommand("CREATE TABLE IF NOT EXISTS sinhvien (ID INT PRIMARY KEY, NAME VARCHAR(50), GENDER VARCHAR(10), NGANH VARCHAR(50), KHOA VARCHAR(50));", connection);
+                SQLiteCommand command1 = new SQLiteCommand("CREATE TABLE IF NOT EXISTS sinhvien (ID INT PRIMARY KEY, NAME VARCHAR(50), GENDER VARCHAR(10), NGANH VARCHAR(50), KHOA VARCHAR(50));", connection);
                 command1.ExecuteNonQuery();
                 _parentform = parentform;
             }
@@ -41,9 +41,9 @@ namespace ex4.Control
             for (int i = 0; i < khoa.Length; i++)
             {
                 TreeNode parent1 = parent.Nodes[i];
-                MySqlCommand command = new MySqlCommand("SELECT ID FROM SINHVIEN WHERE KHOA=@KHOA", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT ID FROM SINHVIEN WHERE KHOA=@KHOA", connection);
                 command.Parameters.AddWithValue("@KHOA", khoa[i].Substring(1));
-                MySqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     TreeNode child = new TreeNode(reader["ID"].ToString());
@@ -60,7 +60,7 @@ namespace ex4.Control
 
         public void remove(int id)
         {
-            MySqlCommand command = new MySqlCommand("DELETE FROM SINHVIEN WHERE ID=@ID", connection);
+            SQLiteCommand command = new SQLiteCommand("DELETE FROM SINHVIEN WHERE ID=@ID", connection);
             command.Parameters.AddWithValue("@ID", id);
             command.ExecuteNonQuery();
         }
@@ -72,9 +72,9 @@ namespace ex4.Control
         public string display(int id)
         {
             string result = null;
-            MySqlCommand command = new MySqlCommand("SELECT * FROM sinhvien WHERE ID=@ID", connection);
+            SQLiteCommand command = new SQLiteCommand("SELECT * FROM sinhvien WHERE ID=@ID", connection);
             command.Parameters.AddWithValue("@ID", id);
-            MySqlDataReader reader = command.ExecuteReader();
+            SQLiteDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 result = $"MSV:{reader["ID"]}\nTên:{reader["NAME"]}\nGiới tính:{reader["GENDER"]}\nKhóa:{reader["KHOA"]}\nNgành:{reader["NGANH"]}";
@@ -97,9 +97,9 @@ namespace ex4.Control
             for (int i = 0; i < khoa.Length; i++)
             {
                 TreeNode parent1 = parent.Nodes[i];
-                MySqlCommand command = new MySqlCommand("SELECT ID FROM SINHVIEN WHERE KHOA=@KHOA", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT ID FROM SINHVIEN WHERE KHOA=@KHOA", connection);
                 command.Parameters.AddWithValue("@KHOA", khoa[i].Substring(1));
-                MySqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     TreeNode child = new TreeNode(reader["ID"].ToString());
